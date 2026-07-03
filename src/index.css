@@ -995,30 +995,124 @@ section {
   animation: fadeUp 0.7s ease 0.15s both;
 }
 
-/* ── other (secondary) projects ────────────────────────── */
-.other-projects-heading {
-  margin-top: 48px;
-  margin-bottom: 20px;
+/* ── show more / less button ────────────────────────────── */
+.show-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
 }
 
-.other-projects-label {
+.show-more-btn {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  padding: 14px 36px;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.show-more-btn:hover {
+  background: var(--accent-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(76, 214, 192, 0.12);
+}
+
+/* ── The Workshop heading ───────────────────────────────── */
+.workshop-heading-wrap {
+  margin-top: 72px;
+  margin-bottom: 28px;
   text-align: center;
 }
 
-.other-projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
+.workshop-label {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
 }
 
+.workshop-label::before,
+.workshop-label::after {
+  content: "";
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: var(--panel-line);
+}
+
+.workshop-sublabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+/* ── Workshop carousel ──────────────────────────────────── */
+.carousel-outer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* smooth momentum scroll on iOS */
+  scrollbar-width: none;             /* Firefox: hide scrollbar */
+  flex: 1;
+  padding: 4px 2px 12px; /* bottom padding keeps box-shadow from clipping */
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none; /* Chrome/Safari: hide scrollbar */
+}
+
+.carousel-btn {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: var(--panel);
+  border: 1px solid var(--panel-line);
+  color: var(--text-muted);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease,
+    transform 0.2s ease;
+  align-self: center;
+}
+
+.carousel-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+  transform: scale(1.08);
+}
+
+/* ── other-card (shared between carousel and any future use) */
 .other-card {
   background: var(--panel);
   padding: 22px;
+  flex: 0 0 280px;          /* Fixed card width in carousel */
+  scroll-snap-align: start;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
 }
 
 .other-card-head {
@@ -1032,14 +1126,21 @@ section {
   font-size: 16px;
 }
 
-.other-card-link {
-  color: var(--text-muted);
-  font-size: 16px;
-  transition: color 0.15s ease;
+.other-card-linked {
+  cursor: pointer;
+  color: inherit;
 }
 
-.other-card-link:hover {
+.other-card-arrow {
+  color: var(--text-muted);
+  font-size: 16px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.other-card-linked:hover .other-card-arrow {
   color: var(--accent);
+  transform: translate(3px, -3px);
 }
 
 .other-card-name {
@@ -1054,6 +1155,7 @@ section {
   line-height: 1.65;
   color: var(--text-muted);
   margin-top: 10px;
+  flex: 1; /* pushes stack to the bottom */
 }
 
 .other-card-stack {
@@ -1079,8 +1181,21 @@ section {
   content: "";
 }
 
-@media (max-width: 700px) {
-  .other-projects-grid {
-    grid-template-columns: 1fr;
+/* ── Carousel mobile responsiveness ─────────────────────── */
+@media (max-width: 600px) {
+  .carousel-btn {
+    /* Hide nav buttons on mobile — touch swipe works natively */
+    display: none;
+  }
+
+  .carousel-track {
+    /* Full-width on mobile, card occupies most of viewport so users can
+       see the next card peeking to signal horizontal scroll */
+    padding: 4px 0 12px;
+  }
+
+  .other-card {
+    flex: 0 0 min(260px, 80vw); /* Peeks next card on small screens */
   }
 }
+

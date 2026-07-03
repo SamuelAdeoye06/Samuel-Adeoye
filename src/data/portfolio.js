@@ -135,23 +135,31 @@ export const projects = [
   },
 ];
 
-// Smaller / earlier projects — shown in a lighter secondary grid,
-// no screenshots needed, just the essentials.
+// Workshop — practice builds & learning experiments shown in a horizontal carousel.
 export const otherProjects = [
   {
     id: "quickconnect",
     name: "QuickConnect",
     description:
-      "A real-time chat app built while learning Firebase — auth, live messaging, and Firestore data sync. The test database has since expired, so it's not live anymore, but it's where I first got comfortable with real-time backends.",
-    stack: ["React", "Firebase", "Firestore"],
-    link: null,
+      "A real-time chat app built while first learning Firebase — auth, live messaging, and Firestore data sync. This is where I first got comfortable with real-time backends.",
+    stack: ["HTML", "CSS", "JavaScript", "Firebase"],
+    link: "https://chatapp-d3328.web.app/",
+  },
+  {
+    id: "ciphervault",
+    name: "CipherVault",
+    description:
+      "An encryption tool — type any text, lock it with a password, and decrypt it later with the same key. Built to explore cryptography concepts hands-on.",
+    stack: ["HTML", "CSS", "Bootstrap", "JavaScript"],
+    link: "https://samueladeoye06.github.io/Cipher-Vault/",
   },
   {
     id: "runmia",
     name: "RunMia",
     description:
-      "A campus marketplace connecting students and vendors, with wallet-based checkout and real-time order updates. Co-built with another developer — formerly called Vendora, now rebranded as RunMia.",
+      "A campus marketplace connecting students and vendors, with wallet-based checkout and real-time order updates. Co-built with another developer — formerly called Vendora.",
     stack: ["React", "TypeScript", "Vite", "Supabase"],
     link: null,
   },
 ];
+
