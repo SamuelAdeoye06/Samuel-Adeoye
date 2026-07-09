@@ -51,10 +51,9 @@ export const skills = [
       "Git / GitHub",
       "Vercel Deployment",
       "Railway Deployment",
+      "Resend",
       "Zustand",
       "Formik & Yup",
-      "Nodemailer",
-      "Resend"
     ],
   },
   {
@@ -90,8 +89,9 @@ export const projects = [
       "JWT",
       "PDFKit",
       "Cloudinary",
+      "Resend",
     ],
-    link: "https://siweslog.com/",
+    link: "https://www.siweslog.com/",
     linkLabel: "View live site",
   },
   {
@@ -165,4 +165,3 @@ export const otherProjects = [
     link: null,
   },
 ];
-
