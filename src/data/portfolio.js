@@ -50,8 +50,11 @@ export const skills = [
       "Cloudinary",
       "Git / GitHub",
       "Vercel Deployment",
+      "Railway Deployment",
       "Zustand",
       "Formik & Yup",
+      "Nodemailer",
+      "Resend"
     ],
   },
   {
@@ -88,7 +91,7 @@ export const projects = [
       "PDFKit",
       "Cloudinary",
     ],
-    link: "https://siweslog.vercel.app/",
+    link: "https://siweslog.com/",
     linkLabel: "View live site",
   },
   {
